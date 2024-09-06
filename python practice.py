@@ -2,6 +2,8 @@ import random
 from hangman_art import stages, logo
 from name_list import marvel_heroes_with_hints, cricketers_with_hints, bollywood_heroes_with_hints
 
+print(logo)
+
 choose_list = int(input("From Which List Do You Like To Guess Name => Cricketers List, Marvel Hero List, Bollywood Hero List : input 0 to choose Marvel Hero List, 1 For Criketer List, 2 For Bollywood Hero List => "))
 
 if choose_list == 0:
