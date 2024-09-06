@@ -28,41 +28,46 @@ while not game_status:
     display = ""
     guess = input("Guess A Letter: ").lower()
 
-    # If the letter has already been guessed
-    if guess in correct_letters:
-        print(f"You already chose the letter '{guess}'. Try again.")
+    if(guess == random_hero):
+        print("You Win")
+        game_status = True
     else:
-        # Check if the guessed letter is in the word
-        for letter in random_hero:
-            if letter == guess:
-                display += guess
-                correct_letters.append(guess)
-            elif letter in correct_letters:
-                display += letter  # Keep correctly guessed letters visible
-            else:
-                display += "_"
-
-        print()
-        print(display)  # Display the current state of the word
-        print(stages[lives])  # Show the current stage of the hangman
-
-        # If the guess was wrong, decrease lives
-        if guess not in random_hero:
-            lives -= 1
-            print("You lost a life.")
-            print(f"********[{lives}/6]********")
-            print()
+        # If the letter has already been guessed
+        if guess in correct_letters:
+            print(f"You already chose the letter '{guess}'. Try again.")
         else:
-            print(f"********[{lives}/6]********")
+            # Check if the guessed letter is in the word
+            for letter in random_hero:
+                if letter == guess:
+                    display += guess
+                    correct_letters.append(guess)
+                elif letter in correct_letters:
+                    display += letter  # Keep correctly guessed letters visible
+                else:
+                    display += "_"
+
             print()
 
-        # If no lives are left, the game is over
-        if lives == 0:
-            game_status = True
-            print("Game over! You lost.")
-            print(f"The correct hero was {random_hero}")
+            # If the guess was wrong, decrease lives
+            if guess not in random_hero:
+                lives -= 1
+                print("You lost a life.")
+                print(f"********[{lives}/6]********")
+                print()
+            else:
+                print(f"********[{lives}/6]********")
+                print()
 
-        # If there are no underscores left, the player has won
-        if "_" not in display:
-            game_status = True
-            print("Congratulations! You guessed the hero correctly.")
+            print(stages[lives])  # Show the current stage of the hangman
+            print(display)  # Display the current state of the word
+            print()
+            # If no lives are left, the game is over
+            if lives == 0:
+                game_status = True
+                print("Game over! You lost.")
+                print(f"The correct hero was {random_hero}")
+
+            # If there are no underscores left, the player has won
+            if "_" not in display:
+                game_status = True
+                print("Congratulations! You guessed the hero correctly.")
