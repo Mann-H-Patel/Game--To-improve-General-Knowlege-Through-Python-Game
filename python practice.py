@@ -1,8 +1,16 @@
 import random
 from hangman_art import stages, logo
-from hero_list import marvel_heroes_with_hints
+from name_list import marvel_heroes_with_hints, cricketers_with_hints, bollywood_heroes_with_hints
 
-random_hero_tuple = random.choice(marvel_heroes_with_hints)
+choose_list = int(input("From Which List Do You Like To Guess Name => Cricketers List, Marvel Hero List, Bollywood Hero List : input 0 to choose Marvel Hero List, 1 For Criketer List, 2 For Bollywood Hero List => "))
+
+if choose_list == 0:
+    random_hero_tuple = random.choice(marvel_heroes_with_hints)
+elif choose_list == 1:
+    random_hero_tuple = random.choice(cricketers_with_hints)
+else:
+    random_hero_tuple = random.choice(bollywood_heroes_with_hints)
+        
 random_hero = random_hero_tuple[0]
 hint = random_hero_tuple[1]
 
@@ -16,7 +24,6 @@ for _ in random_hero:
 
 print(logo)  # Display the logo from hangman_art
 
-print("Guess Marvel Hero Name")
 print(f"Hint: {hint}")  # Display the hint for the randomly selected hero
 print(placeholder)  # Initial display of underscores
 
