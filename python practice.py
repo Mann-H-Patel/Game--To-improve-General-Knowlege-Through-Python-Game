@@ -1,20 +1,31 @@
 import random
 from hangman_art import stages, logo
-from name_list import marvel_heroes_with_hints, cricketers_with_hints, bollywood_heroes_with_hints
+from name_list import marvel_heroes_with_hints, cricketers_with_hints, bollywood_heroes_with_hints, indian_cities_with_hints,indian_historical_places_with_hints, indian_cuisines_with_hints
 
 print(logo)
 
 choose_list = int(input("""From Which List Do You Like To Guess Name =>
                         input [0] to choose Marvel Hero List, 
-                        imput [1] For Criketer List, 
-                        imput [2] For Bollywood Hero List => """))
+                        input [1] For Criketer List, 
+                        input [2] For Bollywood Hero List,
+                        input [3] For Indian Cities List,
+                        input [4] For Historical Places List,
+                        input [5] For Indian Cusine List =>  """))
 
 if choose_list == 0:
     random_hero_tuple = random.choice(marvel_heroes_with_hints)
 elif choose_list == 1:
     random_hero_tuple = random.choice(cricketers_with_hints)
-else:
+elif choose_list == 2:
     random_hero_tuple = random.choice(bollywood_heroes_with_hints)
+elif choose_list == 3:
+    random_hero_tuple = random.choice(indian_cities_with_hints)
+elif choose_list == 4:
+    random_hero_tuple = random.choice(indian_historical_places_with_hints)
+elif choose_list == 5:
+    random_hero_tuple = random.choice(indian_cuisines_with_hints)    
+else:
+    print("Enter Correct Letter Please => ")    
         
 random_hero = random_hero_tuple[0]
 hint = random_hero_tuple[1]
@@ -26,8 +37,6 @@ lives = 6
 placeholder = ""
 for _ in random_hero:
     placeholder += "_"
-
-print(logo)  # Display the logo from hangman_art
 
 print(f"Hint: {hint}")  # Display the hint for the randomly selected hero
 print(placeholder)  # Initial display of underscores
