@@ -1,6 +1,6 @@
 import random
 from hangman_art import stages, logo
-from name_list import marvel_heroes_with_hints, cricketers_with_hints, bollywood_heroes_with_hints, indian_cities_with_hints,indian_historical_places_with_hints, indian_cuisines_with_hints
+from name_list import marvel_heroes_with_hints, cricketers_with_hints, bollywood_heroes_with_hints, indian_cities_with_hints,indian_historical_places_with_hints, indian_cuisines_with_hints, loss_replies,win_replies
 
 print(logo)
 
@@ -72,10 +72,14 @@ while not game_status:
             # If the guess was wrong, decrease lives
             if guess not in random_hero:
                 lives -= 1
-                print("You lost a life.")
+                lossreply = random.choice(loss_replies)
+                print(lossreply)
+                print()
                 print(f"********[{lives}/6]********")
                 print()
             else:
+                winreply = random.choice(win_replies)
+                print(winreply)
                 print(f"********[{lives}/6]********")
                 print()
 
